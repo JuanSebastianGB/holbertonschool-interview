@@ -16,7 +16,7 @@ def canUnlockAll(boxes):
     """Filling a list of keys"""
     if type(boxes) is not list or boxes.__len__() <= 0:
         return False
-    if boxes.__len__():
+    if boxes.__len__() == 1:
         return True
     listOfKeys = []
     for box in boxes:
