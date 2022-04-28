@@ -9,10 +9,8 @@
 listint_t *insert_node(listint_t **head, int number)
 {
     listint_t *current = *head;
-    listint_t *newNode, *currentTemporal;
+    listint_t *newNode;
 
-    if (current == NULL)
-        return (NULL);
     newNode = malloc(sizeof(listint_t));
     /* Testing fail in node creation */
     if (newNode == NULL)
@@ -28,11 +26,11 @@ listint_t *insert_node(listint_t **head, int number)
     {
         if (current->n <= number && current->next->n >= number)
         {
-            currentTemporal = current->next;
+            newNode->next = current->next;
             current->next = newNode;
-            newNode->next = currentTemporal;
+            return (newNode);
         }
         current = current->next;
     }
-    return (newNode);
+    return (NULL);
 }
