@@ -4,6 +4,8 @@
 
 def minOperations(n):
     """Calculates the minimun quantity of operations"""
+    if type(n) != int:
+        return 0
     result = 0
     for i in range(2, n):
         while n % i == 0:
