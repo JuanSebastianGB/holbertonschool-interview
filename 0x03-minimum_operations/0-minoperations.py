@@ -2,7 +2,7 @@
 """Task for define the min quantity of operations"""
 
 
-def minOperations(n):
+def minOperations(n=0):
     """Calculates the minimun quantity of operations"""
     if type(n) != int:
         return 0

@@ -22,3 +22,5 @@ for n in range(-5, 50):
 
 n = ''
 print("Min # of operations to reach {} char: {}".format(n, minOperations(n)))
+
+print("Min # of operations to reach {} char: {}".format(n, minOperations()))
