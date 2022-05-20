@@ -8,9 +8,10 @@
  */
 int is_stable(int matrix[3][3])
 {
+	int i, j;
 
-	for (int i = 0; i < 3; i++)
-		for (int j = 0; j < 3; j++)
+	for (i = 0; i < 3; i++)
+		for (j = 0; j < 3; j++)
 			if (matrix[i][j] > 3)
 				return (0);
 	return (1);
@@ -24,9 +25,9 @@ int is_stable(int matrix[3][3])
  */
 void setting_zeros(int matrix[3][3])
 {
-
-	for (int i = 0; i < 3; i++)
-		for (int j = 0; j < 3; j++)
+	int i, j;
+	for (i = 0; i < 3; i++)
+		for (j = 0; j < 3; j++)
 			matrix[i][j] = 0;
 }
 
@@ -38,8 +39,9 @@ void setting_zeros(int matrix[3][3])
  */
 void duplicate(int objective[3][3], int origin[3][3])
 {
-	for (int i = 0; i < 3; i++)
-		for (int j = 0; j < 3; j++)
+	int i, j;
+	for (i = 0; i < 3; i++)
+		for (j = 0; j < 3; j++)
 			objective[i][j] = origin[i][j];
 }
 
@@ -72,9 +74,10 @@ static void print_grid(int grid[3][3])
  */
 void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 {
+	int i, j;
 
-	for (int i = 0; i < 3; i++)
-		for (int j = 0; j < 3; j++)
+	for (i = 0; i < 3; i++)
+		for (j = 0; j < 3; j++)
 			grid1[i][j] = grid1[i][j] + grid2[i][j];
 
 	while (!is_stable(grid1))
@@ -82,9 +85,9 @@ void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 		printf("=\n");
 		print_grid(grid1);
 		setting_zeros(grid2);
-		for (int i = 0; i < 3; i++)
+		for (i = 0; i < 3; i++)
 		{
-			for (int j = 0; j < 3; j++)
+			for (j = 0; j < 3; j++)
 			{
 				if (grid1[i][j] <= 3)
 					grid2[i][j] += grid1[i][j];
