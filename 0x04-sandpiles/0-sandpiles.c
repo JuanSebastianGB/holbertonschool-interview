@@ -26,6 +26,7 @@ int is_stable(int matrix[3][3])
 void setting_zeros(int matrix[3][3])
 {
 	int i, j;
+
 	for (i = 0; i < 3; i++)
 		for (j = 0; j < 3; j++)
 			matrix[i][j] = 0;
@@ -40,6 +41,7 @@ void setting_zeros(int matrix[3][3])
 void duplicate(int objective[3][3], int origin[3][3])
 {
 	int i, j;
+
 	for (i = 0; i < 3; i++)
 		for (j = 0; j < 3; j++)
 			objective[i][j] = origin[i][j];
