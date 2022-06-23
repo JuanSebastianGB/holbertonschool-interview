@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" -*- coding: utf-8 -*-"""
+""" coding: utf-8 """
 
 
 def get_binary_representation(number):
