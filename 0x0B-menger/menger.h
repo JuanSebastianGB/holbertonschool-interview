@@ -10,4 +10,4 @@
 
 void menger(int level);
 
-#endif /*__MENGER_H__*/
+#endif

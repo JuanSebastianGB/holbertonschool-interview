@@ -7,6 +7,7 @@
  *
  * @x: the x coordinate of the current cell
  * @y: the y coordinate of the point
+ * Return: void
  */
 void draw_blank_in_pow3(int x, int y)
 {
@@ -19,10 +20,12 @@ void draw_blank_in_pow3(int x, int y)
 }
 
 /**
- * It prints a blank space if the sum of the coordinates is divisible by 3,
+ * menger - It prints a blank space if the sum of the
+ * coordinates is divisible by 3,
  * otherwise it prints a hash
  *
- * @param level the level of the sponge to draw
+ * @level: the level of the sponge to draw
+ * Return: void
  */
 void menger(int level)
 {
