@@ -82,16 +82,16 @@ def fill_positions(board, row,  n):
 
     if row == n:
         print_board(board, n)
-        return
+    else:
 
-    for j in range(n):
-        is_safe = True
-        for i in range(row):
-            if unsafe_position(board, i, j, row):
-                is_safe = False
-        if is_safe:
-            board[row] = j
-            fill_positions(board, row + 1, n)
+        for j in range(n):
+            is_safe = True
+            for i in range(row):
+                if unsafe_position(board, i, j, row):
+                    is_safe = False
+            if is_safe:
+                board[row] = j
+                fill_positions(board, row + 1, n)
 
 
 if __name__ == '__main__':
