@@ -27,7 +27,8 @@ def create_board(board_size: int) -> List[List[str]]:
     """
     Create a board.
     """
-    pass
+    board = [0 * board_size for _ in range(board_size)]
+    print(board)
 
 
 def solve_n_queens(n: int) -> List[List[str]]:
@@ -43,5 +44,5 @@ def solve_n_queens(n: int) -> List[List[str]]:
 
 
 if __name__ == '__main__':
-    n = get_size()
-    print(n)
+    board_size = get_size()
+    create_board(board_size)
