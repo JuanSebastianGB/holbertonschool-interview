@@ -2,8 +2,6 @@
 
 """ N queens Interview Question """
 
-
-from typing import List
 import sys
 
 
@@ -27,9 +25,10 @@ def get_size():
 
 
 def unsafe_position(
-        board: List[List[str]],
-        row: int, col: int,
-        current: int) -> bool:
+        board,
+        row,
+        col,
+        current) -> bool:
     """
     If the queen is in the same column, or in the same diagonal,
     as any other queen, then it's unsafe
