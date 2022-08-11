@@ -1,10 +1,10 @@
 #!/usr/bin/node
 
-request = require('request');
+const request = require('request');
 
 const id = process.argv.splice(2);
 
-URL = `https://swapi-api.hbtn.io/api/films/${id}/`;
+const URL = `https://swapi-api.hbtn.io/api/films/${id}/`;
 
 request(URL, (error, response, body) => {
   if (response.statusCode !== 200) return;
@@ -23,6 +23,6 @@ request(URL, (error, response, body) => {
 
   characters.map(async (url) => {
     const character = await charactersList(url);
-    console.log(character['name']);
+    console.log(character.name);
   });
 });
