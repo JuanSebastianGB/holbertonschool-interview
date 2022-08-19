@@ -2,6 +2,7 @@
 
 """Wall Rain Interview test"""
 
+
 def rain(walls):
     """Calculate how much water will be retained after it rains."""
     if not walls:
