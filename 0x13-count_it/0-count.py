@@ -23,7 +23,7 @@ def count_words(subreddit, word_list):
     return alt_count_words(subreddit, word_list, instances, after, count)
 
 
-def alt_count_words(subreddit, word_list, instances, after="", count=0):
+def alt_count_words(subreddit, word_list, instances={}, after="", count=0):
     """
     It takes a subreddit, a list of words, and a dictionary of words and their
     instances, and returns a
