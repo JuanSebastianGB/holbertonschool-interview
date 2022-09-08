@@ -1,0 +1,38 @@
+[
+    {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "count_words",
+        "kind": 2,
+        "importPath": "0-count",
+        "description": "0-count",
+        "peekOfCode": "def count_words(subreddit, word_list):\n    \"\"\"\n    A recursive function that counts the number of times\n    a word appears in a subreddit.\n    :param subreddit: the subreddit to search\n    :param word_list: a list of words to search for\n    :return: A dictionary with the words as keys and the\n    number of times they appear as values.\n    \"\"\"\n    instances = {}",
+        "detail": "0-count",
+        "documentation": {}
+    },
+    {
+        "label": "alt_count_words",
+        "kind": 2,
+        "importPath": "0-count",
+        "description": "0-count",
+        "peekOfCode": "def alt_count_words(subreddit, word_list, instances, after=\"\", count=0):\n    \"\"\"\n    It takes a subreddit, a list of words, and a dictionary of words and their\n    instances, and returns a\n    dictionary of words and their instances\n    :param subreddit: the subreddit to search\n    :param word_list: list of words to search for\n    :param instances: a dictionary that will hold the words and\n    their respective counts\n    :param after: the last post in the list",
+        "detail": "0-count",
+        "documentation": {}
+    }
+]
