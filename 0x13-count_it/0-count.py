@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-count
+Defines recursive function to query the Reddit API,
+parse titles of all hot articles, and print sorted count
 """
 import requests
 
