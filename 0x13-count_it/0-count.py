@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 """
-Reddis count
+count
 """
-
 import requests
 
 
@@ -23,7 +22,7 @@ def count_words(subreddit, word_list):
     return alt_count_words(subreddit, word_list, instances, after, count)
 
 
-def alt_count_words(subreddit, word_list, instances={}, after="", count=0):
+def alt_count_words(subreddit, word_list, instances, after="", count=0):
     """
     It takes a subreddit, a list of words, and a dictionary of words and their
     instances, and returns a
@@ -38,11 +37,12 @@ def alt_count_words(subreddit, word_list, instances={}, after="", count=0):
     to 0 (optional)
     :return: A dictionary with the words and the number of times they appear
     in the
-            titles of the hot posts of a subreddit.
+    titles of the hot posts of a subreddit.
     """
+
     url = f"https://www.reddit.com/r/{subreddit}/hot/.json"
     headers = {"User-Agent": "test-python"}
-    body = {"after": after, "count": count, "limit": 100}
+    body = {"after": after, "count": count, "limit": 10}
 
     response = requests.get(
         url,
