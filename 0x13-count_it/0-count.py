@@ -1,87 +1,62 @@
 #!/usr/bin/python3
-"""
-Defines recursive function to query the Reddit API,
-parse titles of all hot articles, and print sorted count
-"""
+"""counting module reddit"""
+
 import requests
 
 
-def count_words(subreddit, word_list):
+def sort_and_print_dict(word_count):
     """
-    A recursive function that counts the number of times
-    a word appears in a subreddit.
+    Sort the dictionary by value, then by key, then print
+    the key and value of each item in the
+    dictionary
 
-    :param subreddit: the subreddit to search
-    :param word_list: a list of words to search for
-    :return: A dictionary with the words as keys and the
-    number of times they appear as values.
+    :param word_count: the dictionary we're sorting
     """
-    instances = {}
-    after = ""
-    count = 0
+    sorted_dict = dict(sorted(
+        word_count.items(),
+        key=lambda argument: (argument[1], argument[0]),
+        reverse=True
+    ))
+    for key, value in sorted_dict.items():
+        if value > 0:
+            print(f"{key}: {value}")
 
-    return alt_count_words(subreddit, word_list, instances, after, count)
 
-
-def alt_count_words(subreddit, word_list, instances, after="", count=0):
+def make_request(subreddit, after):
     """
-    It takes a subreddit, a list of words, and a dictionary of words and their
-    instances, and returns a
-    dictionary of words and their instances
+    It makes a request to the Reddit API for the hot posts in
+    a given subreddit, and returns the response
 
-    :param subreddit: the subreddit to search
-    :param word_list: list of words to search for
-    :param instances: a dictionary that will hold the words and
-    their respective counts
-    :param after: the last post in the list
-    :param count: the number of items that have been fetched so far, defaults
-    to 0 (optional)
-    :return: A dictionary with the words and the number of times they appear
-    in the
-    titles of the hot posts of a subreddit.
+    :param subreddit: the subreddit we want to make a request to
+    :param after: This is the last post in the previous request
+    :return: A request object.
     """
-
-    url = f"https://www.reddit.com/r/{subreddit}/hot/.json"
-    headers = {"User-Agent": "test-python"}
-    body = {"after": after, "count": count, "limit": 10}
-
-    response = requests.get(
+    url = f"https://api.reddit.com/r/{subreddit}/hot"
+    headers = {'user-agent': 'counting-app'}
+    params = {'limit': 100, 'after': after}
+    return requests.get(
         url,
         headers=headers,
-        params=body,
-        allow_redirects=False)
+        params=params, allow_redirects=False
+    )
 
-    try:
-        json_response = response.json()
-        if response.status_code > 300:
-            raise BaseException
 
-    except BaseException:
-        return
-
-    json_response = json_response.get("data")
-    after = json_response.get("after")
-    count += json_response.get("dist")
-    for child in json_response.get("children"):
-        title = child.get("data").get("title").lower().split()
+def count_words(subreddit, word_list, word_count={}, after=""):
+    """Recursive function to count a subreddit words"""
+    if len(word_count) == 0:
         for word in word_list:
-            if word.lower() in title:
-                total = len([total for total in title
-                             if total == word.lower()])
-                got_word = instances.get(word)
-                instances[word] = total if got_word is None\
-                    else instances[word] + total
-
+            word_count[word.lower()] = 0
     if after is None:
-        if len(instances) == 0:
-            print("")
-            return
-        code = []
-        for item, value in instances.items():
-            code.append((value, item))
-        code.sort(reverse=True)
-        for k in code:
-            item, value = k[0], k[1]
-            print(f"{value}: {item}")
-    else:
-        alt_count_words(subreddit, word_list, instances, after, count)
+        sort_and_print_dict(word_count)
+        return None
+    response = make_request(subreddit, after)
+    if response.status_code != 200:
+        return None
+    after = response.json()['data']['after']
+    children = response.json()['data']['children']
+    for child_object in children:
+        title_string_split = child_object['data']['title'].lower().split(" ")
+        for word in word_list:
+            word_count[word.lower()] += title_string_split.count(
+                word.lower())
+    count_words(subreddit, word_list, word_count, after)
