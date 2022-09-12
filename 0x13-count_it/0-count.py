@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""counting module reddit"""
+""" counting module reddit """
 
 import requests
 
@@ -7,10 +7,7 @@ import requests
 def sort_and_print_dict(word_count):
     """
     Sort the dictionary by value, then by key, then print
-    the key and value of each item in the
-    dictionary
-
-    :param word_count: the dictionary we're sorting
+    the key and value
     """
     sorted_dict = dict(sorted(
         word_count.items(),
@@ -26,11 +23,8 @@ def make_request(subreddit, after):
     """
     It makes a request to the Reddit API for the hot posts in
     a given subreddit, and returns the response
-
-    :param subreddit: the subreddit we want to make a request to
-    :param after: This is the last post in the previous request
-    :return: A request object.
     """
+
     url = f"https://api.reddit.com/r/{subreddit}/hot"
     headers = {'user-agent': 'counting-app'}
     params = {'limit': 100, 'after': after}
