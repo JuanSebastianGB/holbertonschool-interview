@@ -10,10 +10,7 @@ import requests
 
 
 def sort_and_print_dict(word_count):
-    """
-    Sort the dictionary by value, then by key, then print
-    the key and value
-    """
+    """Sort the dictionary by value, then by key"""
     sorted_dict = dict(sorted(
         word_count.items(),
         key=lambda argument: (argument[1], argument[0]),
@@ -25,10 +22,7 @@ def sort_and_print_dict(word_count):
 
 
 def make_request(subreddit, after):
-    """
-    It makes a request to the Reddit API for the hot posts in
-    a given subreddit, and returns the response
-    """
+    """It makes a request to the Reddit API"""
 
     url = f"https://api.reddit.com/r/{subreddit}/hot"
     headers = {'user-agent': 'counting-app'}
