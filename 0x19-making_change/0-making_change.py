@@ -6,7 +6,8 @@ START_DATA = 0
 
 
 def makeChange(coins, total):
-    """ With a pile of coins of different values, return fewest number of coins needed to get a total amount.
+    """ With a pile of coins of different values,
+    return fewest number of coins needed to get a total amount.
     """
     if total < 1:
         return 0
