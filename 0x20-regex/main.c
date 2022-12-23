@@ -3,6 +3,7 @@
 
 #include "regex.h"
 
+<<<<<<< HEAD
 #define TEST_MATCH(s, p)                    \
   do                                        \
   {                                         \
@@ -11,6 +12,16 @@
       printf("%s -> %s = %d\n", s, p, res); \
     }                                       \
   } while (0)
+=======
+#define TEST_MATCH(s, p)                          \
+	do                                            \
+	{                                             \
+		{                                         \
+			int res = regex_match(s, p);          \
+			printf("%s -> %s = %d\n", s, p, res); \
+		}                                         \
+	} while (0)
+>>>>>>> 2955d957848264840011a45620b21c362b2203a2
 
 /**
  * main - Entry point
@@ -19,6 +30,7 @@
  */
 int main(void)
 {
+<<<<<<< HEAD
   TEST_MATCH("H", "H");
   TEST_MATCH("HH", "H");
   TEST_MATCH("HH", "H*");
@@ -40,4 +52,27 @@ int main(void)
   TEST_MATCH("!H@o#l$b%e^r&t(o)n_", "!.@.#.$.%.^.&.(.)._");
 
   return (EXIT_SUCCESS);
+=======
+	TEST_MATCH("H", "H");
+	TEST_MATCH("HH", "H");
+	TEST_MATCH("HH", "H*");
+	TEST_MATCH("HHHHHHHHHHHHHHHHH", "H*");
+
+	TEST_MATCH("Holberton", ".*");
+	TEST_MATCH("Alex", ".*");
+	TEST_MATCH("Guillaume", ".*");
+	TEST_MATCH("Julien", ".*");
+
+	TEST_MATCH("Holberton", "Z*H.*");
+	TEST_MATCH("Holberton", "Z*H.*olberton");
+	TEST_MATCH("Holberton", "Z*H.*o.");
+	TEST_MATCH("Holberton", "Z*H.*o");
+
+	TEST_MATCH("Holberton", "holberton");
+	TEST_MATCH("Holberton", ".olberton");
+
+	TEST_MATCH("!H@o#l$b%e^r&t(o)n_", "!.@.#.$.%.^.&.(.)._");
+
+	return (EXIT_SUCCESS);
+>>>>>>> 2955d957848264840011a45620b21c362b2203a2
 }
