@@ -2,7 +2,7 @@
 """Prime Game"""
 
 
-def is_prime_number(n: int) -> int:
+def is_prime_number(incoming_number: int) -> int:
     """
     If the square root of n is not an integer, then for
     every integer between the square root of n and
@@ -11,25 +11,25 @@ def is_prime_number(n: int) -> int:
     :param n: The number to check if it's prime
     :return: 0 or 1
     """
-    for i in range(int(n**(1 / 2)), int(n / 2)):
-        if not (n % i):
+    for i in range(int(incoming_number**(1 / 2)), int(incoming_number / 2)):
+        if not incoming_number % i:
             return 0
         return 1
 
 
-def find_multiples(array: list[int], num: int) -> None:
+def find_multiples(incoming_array, num: int) -> None:
     """
-    It removes all multiples of num from array, except
+    It removes all multiples of num from incoming_array, except
     for num itself if it is prime.
     :param array: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,
     12, 13, 14, 15, 16, 17, 18, 19, 20]
     :param num: the number to find multiples of
     """
-    for i in array:
+    for i in incoming_array:
         if i % num == 0:
             if (num == i and is_prime_number(i)):
                 continue
-            array.remove(i)
+            incoming_array.remove(i)
 
 
 def play(array, winner: str) -> str:
@@ -40,11 +40,11 @@ def play(array, winner: str) -> str:
     :return: The winner of the game.
     """
     for _ in array:
-        winner = 'Maria' if winner == 'Ben' else 'Ben'
+        winner = 'Maria' if winner == 'Maria' else 'Ben'
         return winner
 
 
-def list_maker(array: list[int]) -> list[int]:
+def list_maker(incoming_array):
     """
     It takes an array and iterates through it, finding all the
     multiples of each number in the array and
@@ -54,15 +54,15 @@ def list_maker(array: list[int]) -> list[int]:
     :return: The array with the multiples removed.
     """
     i = 0
-    while i < len(array):
-        value = array[i]
-        find_multiples(array, value)
+    while i < len(incoming_array):
+        value = incoming_array[i]
+        find_multiples(incoming_array, value)
         i += 1
 
-        return array
+        return incoming_array
 
 
-def get_primes(primes: list[int], num: int) -> list[int]:
+def get_primes(primes: list, num: int) -> list:
     """
     It takes a list of primes and a number, and returns a list
     of primes that are less than or equal to
@@ -74,7 +74,7 @@ def get_primes(primes: list[int], num: int) -> list[int]:
     return [i for i in primes if i <= num]
 
 
-def isWinner(x: int, nums: list[int]) -> str:
+def isWinner(x: int, nums: list) -> str:
     """
     It takes a list of numbers and returns the winner of the game
     for each number in the list
